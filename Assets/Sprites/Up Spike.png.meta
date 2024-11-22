@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<<< Updated upstream:Assets/Sprites/Spike_2.png.meta
-guid: 8be58785813f4ae4b9b1f8d1d66aca25
-========
-guid: dd88d98aa91ede1429488f5fade6b571
->>>>>>>> Stashed changes:Assets/Sprites/Left Spike.png.meta
+guid: 3d0bc391abf5d2644a7c75f2275e273a
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -37,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -51,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
