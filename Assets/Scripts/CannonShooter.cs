@@ -1,64 +1,53 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CannonShooter : MonoBehaviour
 {
-    [SerializeField] private GameObject ballPrefab; // The prefab of the ball to shoot
-    [SerializeField] private Transform shootPoint; // The point from where the ball is shot
-    [SerializeField] private float shootForce = 10f; // Force applied to the ball
-    [SerializeField] private float shootInterval = 5f; // Time interval between shots
+    public bool playerInRange = false;
+    // Fireball prefab to spawn
+    public GameObject fireballPrefab;
 
-    private bool isPlayerInRange = false; // Tracks if the player is in the collider
-    private Coroutine shootingCoroutine;
+    // Time interval between shots
+    public float shootInterval = 2f;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    // Fireball speed
+    public float fireballSpeed = 10f;
+
+    // Internal timer to manage firing
+    private float timer;
+    private Vector3 dir;
+
+    void Update()
     {
-        if (collision.CompareTag("Player")) // Ensure the object entering is the player
+        // Update the timer
+        if (playerInRange)
+        timer += Time.deltaTime;
+
+        // Check if it's time to shoot
+        if (timer >= shootInterval)
         {
-            isPlayerInRange = true;
-            shootingCoroutine = StartCoroutine(StartShooting());
+            ShootFireball();
+            timer = 0f; // Reset the timer
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    void ShootFireball()
     {
-        if (collision.CompareTag("Player")) // Ensure the object exiting is the player
+        if (fireballPrefab != null && transform != null)
         {
-            isPlayerInRange = false;
-            if (shootingCoroutine != null)
+            // Spawn the fireball
+            GameObject fireball = Instantiate(fireballPrefab, transform.position, transform.rotation);
+
+            // Add velocity to the fireball
+            Rigidbody2D rb = fireball.GetComponent<Rigidbody2D>();
+            if (rb != null)
             {
-                StopCoroutine(shootingCoroutine);
+                dir = (PlayerManager.instance.gameObject.transform.position - transform.position).normalized;
+                rb.velocity = dir * fireballSpeed; // Fire in the forward direction
             }
         }
-    }
-
-    private IEnumerator StartShooting()
-    {
-        while (isPlayerInRange)
+        else
         {
-            ShootBall();
-            yield return new WaitForSeconds(shootInterval);
-        }
-    }
-
-    private void ShootBall()
-    {
-        if (ballPrefab == null || shootPoint == null)
-        {
-            Debug.LogError("BallPrefab or ShootPoint is not assigned!");
-            return;
-        }
-
-        // Instantiate the ball at the shoot point
-        GameObject ball = Instantiate(ballPrefab, shootPoint.position, shootPoint.rotation);
-
-        // Add force to the ball to shoot it towards the player
-        Rigidbody2D rb = ball.GetComponent<Rigidbody2D>();
-        if (rb != null)
-        {
-            rb.AddForce(shootPoint.right * shootForce, ForceMode2D.Impulse);
+            Debug.LogWarning("Fireball prefab or fire point not assigned!");
         }
     }
 }
-

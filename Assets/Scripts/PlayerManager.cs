@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class PlayerManager : MonoBehaviour
 {
+    public static PlayerManager instance; void Awake() { instance = this; }
+
     public float speed;
     public float moveInput;
     public float dashingPower = 10f;
