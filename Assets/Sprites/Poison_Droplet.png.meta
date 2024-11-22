@@ -3,10 +3,17 @@ fileFormatVersion: 2
 guid: 83b5d85f38265c241b3e07dde8e8079d
 =======
 <<<<<<<< Updated upstream:Assets/Sprites/Spike.png.meta
+<<<<<<<< Updated upstream:Assets/Sprites/Spike.png.meta
 guid: 15d9e6623e2fdb843952de80e27f183a
 ========
 guid: 371742bb9da229041a9cc19320cb3f50
 >>>>>>>> Stashed changes:Assets/Sprites/Down_Spike.png.meta
+<<<<<<< HEAD:Assets/Sprites/Poison_Droplet.png.meta
+>>>>>>> abhi:Assets/Sprites/Spike.png.meta
+=======
+========
+guid: 093b7a56f5642054980f9e3183202124
+>>>>>>>> Stashed changes:Assets/Sprites/Canon.png.meta
 >>>>>>> abhi:Assets/Sprites/Spike.png.meta
 TextureImporter:
   internalIDToNameTable: []
