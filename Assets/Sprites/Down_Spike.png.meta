@@ -1,13 +1,9 @@
 fileFormatVersion: 2
-<<<<<<< HEAD:Assets/Sprites/Water_Droplet.png.meta
-guid: c994eae9a9ebafe439da145174243df9
-=======
-<<<<<<<< Updated upstream:Assets/Sprites/Spike_2.png.meta
-guid: 8be58785813f4ae4b9b1f8d1d66aca25
+<<<<<<<< Updated upstream:Assets/Sprites/Spike.png.meta
+guid: 3e611514a767d724c997f0c58d9b74f8
 ========
-guid: dd88d98aa91ede1429488f5fade6b571
->>>>>>>> Stashed changes:Assets/Sprites/Left Spike.png.meta
->>>>>>> abhi:Assets/Sprites/Spike_2.png.meta
+guid: 371742bb9da229041a9cc19320cb3f50
+>>>>>>>> Stashed changes:Assets/Sprites/Down_Spike.png.meta
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -41,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -55,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1

@@ -10,21 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-<<<<<<< HEAD:Assets/Sprites/Spike_2_Up.asset
-  m_Name: Spike_2_Up
+  m_Name: Left Spike
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300000, guid: 12b5f46eb00f8d842a24912bcccae5c3, type: 3}
-=======
-<<<<<<<< Updated upstream:Assets/Sprites/Spike.asset
-  m_Name: Spike
-  m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300000, guid: 15d9e6623e2fdb843952de80e27f183a, type: 3}
-========
-  m_Name: Down_Spike
-  m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300000, guid: 371742bb9da229041a9cc19320cb3f50, type: 3}
->>>>>>>> Stashed changes:Assets/Sprites/Down_Spike.asset
->>>>>>> abhi:Assets/Sprites/Spike.asset
+  m_Sprite: {fileID: 21300000, guid: dd88d98aa91ede1429488f5fade6b571, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1

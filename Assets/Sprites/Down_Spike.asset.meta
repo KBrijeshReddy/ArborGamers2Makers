@@ -1,13 +1,9 @@
 fileFormatVersion: 2
-<<<<<<< HEAD:Assets/Sprites/Spike_2_-_Bottom.asset.meta
-guid: e566e8ac891e78842ba660625e167b0f
-=======
 <<<<<<<< Updated upstream:Assets/Sprites/Spike.asset.meta
-guid: 92d408b5a93a71445ae39855db5a74e7
+guid: 9c4a9117253299a43859d31ea3b4c82a
 ========
 guid: 9c700ffac2d26c74bae93d18b4597e35
 >>>>>>>> Stashed changes:Assets/Sprites/Down_Spike.asset.meta
->>>>>>> abhi:Assets/Sprites/Spike.asset.meta
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 11400000
