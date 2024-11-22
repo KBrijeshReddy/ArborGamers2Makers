@@ -7,14 +7,18 @@ public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager instance; void Awake() { instance = this; }
 
-    public float speed;
+    public float CurrentSpeed;
+    public float NormalSpeed = 7f;
+    public float ReducedSpeed = 3f;
     public float moveInput;
-    public float dashingPower = 10f;
+    public float dashingPower = 24f;
     public float dashingTime = 0.2f;
     public float dashingCooldown = 1f;
     public float maxTimeOnGround = 7f;
+    public float recoveryTime = 3f;
     public LayerMask groundLayer;
     public SpriteRenderer playerSprite;
+    private Coroutine recoveryCoroutine;
 
     private Rigidbody2D rb;
     private RaycastHit2D hit;
@@ -28,6 +32,7 @@ public class PlayerManager : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         playerSprite.color = Color.white;
+        CurrentSpeed = NormalSpeed;
     }
 
     void FixedUpdate()
@@ -48,7 +53,7 @@ public class PlayerManager : MonoBehaviour
             return;
         }
         moveInput = Input.GetAxis("Horizontal");
-        rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
+        rb.velocity = new Vector2(moveInput * CurrentSpeed, rb.velocity.y);
         
         if (facingRight == false && moveInput > 0)
         {
@@ -77,6 +82,7 @@ public class PlayerManager : MonoBehaviour
         {
             StartCoroutine(Dash());    
         }
+        Debug.Log(CurrentSpeed);
     }
 
     void Flip()
@@ -116,6 +122,15 @@ public class PlayerManager : MonoBehaviour
         {
             collision.gameObject.GetComponent<WheelTrigger>().RunRoll(IsAbove);
         }
+        if (collision.gameObject.tag == "water")
+        {
+            if (recoveryCoroutine != null)
+            {
+                StopCoroutine(recoveryCoroutine); // Stop any existing recovery coroutine
+            }
+            CurrentSpeed = ReducedSpeed; // Reduce speed immediately
+            recoveryCoroutine = StartCoroutine(RecoverSpeedAfterDelay());
+        }
     }
 
     private IEnumerator Dash()
@@ -130,5 +145,11 @@ public class PlayerManager : MonoBehaviour
         isDashing = false;
         yield return new WaitForSeconds(dashingCooldown);
         canDash = true;
+    }
+
+    private IEnumerator RecoverSpeedAfterDelay()
+    {
+        yield return new WaitForSeconds(recoveryTime); // Wait for recovery time
+        CurrentSpeed = NormalSpeed; // Restore normal speed
     }
 }
