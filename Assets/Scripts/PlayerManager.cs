@@ -89,6 +89,10 @@ public class PlayerManager : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
+        if(collision.gameObject.tag == "cannontrigger")
+        {
+            Debug.Log("1");
+        }
     }
 
     private IEnumerator Dash()
