@@ -14,6 +14,7 @@ public class PlayerManager : MonoBehaviour
     public float dashingCooldown = 1f;
     public float maxTimeOnGround = 7f;
     public LayerMask groundLayer;
+    public SpriteRenderer playerSprite;
 
     private Rigidbody2D rb;
     private RaycastHit2D hit;
@@ -26,6 +27,7 @@ public class PlayerManager : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        playerSprite.color = Color.white;
     }
 
     void FixedUpdate()
@@ -33,6 +35,7 @@ public class PlayerManager : MonoBehaviour
         if (IsGrounded())
         {
             timeOnGround += Time.deltaTime;
+            playerSprite.color = Color.Lerp(Color.white, Color.red, timeOnGround/maxTimeOnGround);
             if (timeOnGround >= maxTimeOnGround)
             {
                 timeOnGround = 0f;
@@ -109,9 +112,9 @@ public class PlayerManager : MonoBehaviour
         {
             RestartLevel();
         }
-        if(collision.gameObject.tag == "cannontrigger")
+        if (collision.gameObject.tag == "wheeltrigger")
         {
-            Debug.Log("1");
+            collision.gameObject.GetComponent<WheelTrigger>().RunRoll(IsAbove);
         }
     }
 
