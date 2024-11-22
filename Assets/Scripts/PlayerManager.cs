@@ -7,21 +7,17 @@ public class PlayerManager : MonoBehaviour
 {
     public float speed;
     public float moveInput;
-
-    private Rigidbody2D rb;
-
-    private bool facingRight = true;
-
-    private RaycastHit2D hit;
-    private bool IsAbove = false;
-
-    public LayerMask groundLayer;
-
-    private bool canDash = true;
-    private bool isDashing;
     public float dashingPower = 10f;
     public float dashingTime = 0.2f;
     public float dashingCooldown = 1f;
+    public LayerMask groundLayer;
+
+    private Rigidbody2D rb;
+    private bool facingRight = true;
+    private RaycastHit2D hit;
+    private bool IsAbove = false;
+    private bool canDash = true;
+    private bool isDashing = false;
 
     void Start()
     {
@@ -55,6 +51,7 @@ public class PlayerManager : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Q) && IsGrounded())
         {
+            Debug.Log("nil");
             rb.gravityScale *= -1;
             IsAbove = !IsAbove;
         }
