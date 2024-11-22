@@ -4,50 +4,61 @@ using UnityEngine;
 
 public class CannonShooter : MonoBehaviour
 {
-    [Header("Cannon Settings")]
-    public GameObject bulletPrefab; // The bullet prefab
-    public Transform firePoint; // Where the bullet spawns
-    public float bulletSpeed = 10f; // Speed of the bullet
-    public float fireRate = 5f; // Time between shots in seconds
+    [SerializeField] private GameObject ballPrefab; // The prefab of the ball to shoot
+    [SerializeField] private Transform shootPoint; // The point from where the ball is shot
+    [SerializeField] private float shootForce = 10f; // Force applied to the ball
+    [SerializeField] private float shootInterval = 5f; // Time interval between shots
 
-    private Transform player;
-    private float fireCooldown = 0f;
+    private bool isPlayerInRange = false; // Tracks if the player is in the collider
+    private Coroutine shootingCoroutine;
 
-    void Start()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform; // Find the player by tag
-    }
-
-    void Update()
-    {
-        fireCooldown -= Time.deltaTime;
-
-        if (fireCooldown <= 0f)
+        if (collision.CompareTag("Player")) // Ensure the object entering is the player
         {
-            ShootAtPlayer();
-            fireCooldown = fireRate;
+            isPlayerInRange = true;
+            shootingCoroutine = StartCoroutine(StartShooting());
         }
     }
 
-    private void ShootAtPlayer()
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        if (player == null) return;
+        if (collision.CompareTag("Player")) // Ensure the object exiting is the player
+        {
+            isPlayerInRange = false;
+            if (shootingCoroutine != null)
+            {
+                StopCoroutine(shootingCoroutine);
+            }
+        }
+    }
 
-        // Calculate direction to player
-        Vector2 direction = (player.position - firePoint.position).normalized;
+    private IEnumerator StartShooting()
+    {
+        while (isPlayerInRange)
+        {
+            ShootBall();
+            yield return new WaitForSeconds(shootInterval);
+        }
+    }
 
-        // Instantiate the bullet
-        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
+    private void ShootBall()
+    {
+        if (ballPrefab == null || shootPoint == null)
+        {
+            Debug.LogError("BallPrefab or ShootPoint is not assigned!");
+            return;
+        }
 
-        // Add velocity to the bullet
-        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+        // Instantiate the ball at the shoot point
+        GameObject ball = Instantiate(ballPrefab, shootPoint.position, shootPoint.rotation);
+
+        // Add force to the ball to shoot it towards the player
+        Rigidbody2D rb = ball.GetComponent<Rigidbody2D>();
         if (rb != null)
         {
-            rb.velocity = direction * bulletSpeed;
+            rb.AddForce(shootPoint.right * shootForce, ForceMode2D.Impulse);
         }
-
-        // Optional: Destroy the bullet after a certain time to avoid clutter
-        Destroy(bullet, 5f);
     }
 }
 
