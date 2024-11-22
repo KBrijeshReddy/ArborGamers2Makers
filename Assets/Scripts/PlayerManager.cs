@@ -12,11 +12,13 @@ public class PlayerManager : MonoBehaviour
     public float dashingPower = 10f;
     public float dashingTime = 0.2f;
     public float dashingCooldown = 1f;
+    public float maxTimeOnGround = 7f;
     public LayerMask groundLayer;
 
     private Rigidbody2D rb;
-    private bool facingRight = true;
     private RaycastHit2D hit;
+    private float timeOnGround = 0f;
+    private bool facingRight = true;
     private bool IsAbove = false;
     private bool canDash = true;
     private bool isDashing = false;
@@ -28,6 +30,16 @@ public class PlayerManager : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (IsGrounded())
+        {
+            timeOnGround += Time.deltaTime;
+            if (timeOnGround >= maxTimeOnGround)
+            {
+                timeOnGround = 0f;
+                RestartLevel();
+            }
+        }
+
         if (isDashing)
         {
             return;
@@ -56,6 +68,7 @@ public class PlayerManager : MonoBehaviour
             Debug.Log("nil");
             rb.gravityScale *= -1;
             IsAbove = !IsAbove;
+            timeOnGround = 0f;
         }
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
@@ -69,6 +82,11 @@ public class PlayerManager : MonoBehaviour
         Vector3 Scaler = transform.localScale;
         Scaler.x *= -1;
         transform.localScale = Scaler;
+    }
+
+    public void RestartLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     private bool IsGrounded()
@@ -89,7 +107,7 @@ public class PlayerManager : MonoBehaviour
     {
         if (collision.gameObject.tag == "enemy")
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            RestartLevel();
         }
         if(collision.gameObject.tag == "cannontrigger")
         {
