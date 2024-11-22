@@ -1,5 +1,13 @@
 fileFormatVersion: 2
-guid: 3d0bc391abf5d2644a7c75f2275e273a
+<<<<<<<< Updated upstream:Assets/Sprites/Spike_2.png.meta
+<<<<<<<< Updated upstream:Assets/Sprites/Spike_2.png.meta
+guid: 8be58785813f4ae4b9b1f8d1d66aca25
+========
+guid: dd88d98aa91ede1429488f5fade6b571
+>>>>>>>> Stashed changes:Assets/Sprites/Left Spike.png.meta
+========
+guid: c67615c4ddc8e4e4b84a6838ccecf677
+>>>>>>>> Stashed changes:Assets/Sprites/Fire_Wheel.png.meta
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -33,7 +41,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -47,7 +55,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1

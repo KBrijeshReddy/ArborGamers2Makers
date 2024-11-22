@@ -1,9 +1,13 @@
 fileFormatVersion: 2
 <<<<<<<< Updated upstream:Assets/Sprites/Spike.png.meta
+<<<<<<<< Updated upstream:Assets/Sprites/Spike.png.meta
 guid: 15d9e6623e2fdb843952de80e27f183a
 ========
 guid: 371742bb9da229041a9cc19320cb3f50
 >>>>>>>> Stashed changes:Assets/Sprites/Down_Spike.png.meta
+========
+guid: 093b7a56f5642054980f9e3183202124
+>>>>>>>> Stashed changes:Assets/Sprites/Canon.png.meta
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
