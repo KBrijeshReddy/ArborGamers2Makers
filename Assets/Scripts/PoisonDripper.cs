@@ -8,6 +8,7 @@ public class PoisonDripper : MonoBehaviour
     [SerializeField] private Transform shootPoint; // The point from where the ball is shot
     [SerializeField] private float shootForce = 5f; // Force applied to the ball
     [SerializeField] private float shootInterval = 3f; // Time interval between shots
+    public string uppadowna;
 
     private void Start()
     {
@@ -38,7 +39,14 @@ public class PoisonDripper : MonoBehaviour
         Rigidbody2D rb = ball.GetComponent<Rigidbody2D>();
         if (rb != null)
         {
-            rb.AddForce(Vector2.down * shootForce, ForceMode2D.Impulse);
+            if (uppadowna == "up")
+            {
+                rb.AddForce(Vector2.up * shootForce, ForceMode2D.Impulse);
+            }
+            else
+            {
+                rb.AddForce(Vector2.down * shootForce, ForceMode2D.Impulse);
+            }
         }
     }
 }
