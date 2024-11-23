@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SceneChanger : MonoBehaviour
 {
     public bool keyCollected;
+    public int nextSceneNumber;
 
     void Start()
     {
@@ -17,11 +19,7 @@ public class SceneChanger : MonoBehaviour
         {
             if (keyCollected)
             {
-                // change scene
-            }
-            else
-            {
-                // alert player
+                SceneManager.LoadScene(nextSceneNumber);
             }
         }
     }
