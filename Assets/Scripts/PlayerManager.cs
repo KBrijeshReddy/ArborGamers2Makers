@@ -55,14 +55,14 @@ public class PlayerManager : MonoBehaviour
         }
         moveInput = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(moveInput * CurrentSpeed, rb.velocity.y);
-        
-        if (facingRight == false && moveInput > 0)
+
+        if (facingRight == false && moveInput * rb.gravityScale > 0)
         {
-            Flip();
+            FlipX();
         }
-        else if(facingRight == true && moveInput < 0) 
+        else if(facingRight == true && moveInput * rb.gravityScale < 0) 
         {
-            Flip();
+            FlipX();
         }
     }
 
@@ -78,6 +78,7 @@ public class PlayerManager : MonoBehaviour
             rb.gravityScale *= -1;
             IsAbove = !IsAbove;
             timeOnGround = 0f;
+            FlipY();
         }
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
@@ -86,11 +87,19 @@ public class PlayerManager : MonoBehaviour
         Debug.Log(CurrentSpeed);
     }
 
-    void Flip()
+    void FlipX()
     {
         facingRight = !facingRight;
         Vector3 Scaler = transform.localScale;
         Scaler.x *= -1;
+        transform.localScale = Scaler;
+    }
+
+    void FlipY()
+    {
+        facingRight = !facingRight;
+        Vector3 Scaler = transform.localScale;
+        Scaler.y *= -1;
         transform.localScale = Scaler;
     }
 
@@ -152,5 +161,12 @@ public class PlayerManager : MonoBehaviour
     {
         yield return new WaitForSeconds(recoveryTime); // Wait for recovery time
         CurrentSpeed = NormalSpeed; // Restore normal speed
+    }
+
+    private void OnDrawGizmos()
+    {
+        // Draw a ray to visualize ground check in the editor
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(transform.position, transform.position + Vector3.down * 1.1f);
     }
 }
