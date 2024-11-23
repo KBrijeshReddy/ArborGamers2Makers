@@ -9,6 +9,7 @@ TagManager:
   - cannontrigger
   - wheeltrigger
   - water
+  - checkpoint
   layers:
   - Default
   - TransparentFX
