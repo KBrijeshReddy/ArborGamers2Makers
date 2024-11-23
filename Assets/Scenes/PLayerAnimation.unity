@@ -2233,6 +2233,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3794939639400789210, guid: 5a7434e89648a8b4bace2d23b3550e70, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1898615134}
+    - target: {fileID: 3794939639400789210, guid: 5a7434e89648a8b4bace2d23b3550e70, type: 3}
       propertyPath: dashingPower
       value: 14
       objectReference: {fileID: 0}

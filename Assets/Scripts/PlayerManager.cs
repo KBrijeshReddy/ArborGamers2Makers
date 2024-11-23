@@ -19,6 +19,7 @@ public class PlayerManager : MonoBehaviour
     public LayerMask groundLayer;
     public SpriteRenderer playerSprite;
     public string level;
+    public Animator animator;
 
     private Coroutine recoveryCoroutine;
     private Rigidbody2D rb;
@@ -55,6 +56,7 @@ public class PlayerManager : MonoBehaviour
         }
         moveInput = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(moveInput * CurrentSpeed, rb.velocity.y);
+        animator.SetFloat("Speed", Mathf.Abs(moveInput));
 
         if (facingRight == false && moveInput * rb.gravityScale > 0)
         {
@@ -70,8 +72,12 @@ public class PlayerManager : MonoBehaviour
     {
         if (isDashing)
         {
+            Debug.Log("dashing");
+            animator.SetBool("Dashing", true);
             return;
         }
+        Debug.Log("not dashing");
+        animator.SetBool("Dashing", false);
         if (Input.GetKeyDown(KeyCode.Q) && IsGrounded())
         {
             Debug.Log("nil");
@@ -80,9 +86,10 @@ public class PlayerManager : MonoBehaviour
             timeOnGround = 0f;
             FlipY();
         }
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (canDash && Input.GetKeyDown(KeyCode.Space))
         {
-            StartCoroutine(Dash());    
+            StartCoroutine(Dash());
+            
         }
         Debug.Log(CurrentSpeed);
     }
@@ -145,14 +152,25 @@ public class PlayerManager : MonoBehaviour
 
     private IEnumerator Dash()
     {
+        // Prevent dashing again while already dashing or during cooldown
         canDash = false;
         isDashing = true;
+
+        // Save the original gravity scale and temporarily disable gravity
         float originalGravity = rb.gravityScale;
         rb.gravityScale = 0f;
+
+        // Apply the dashing force
         rb.velocity = new Vector2(transform.localScale.x * dashingPower, 0f);
+
+        // Wait for the dashing time to complete
         yield return new WaitForSeconds(dashingTime);
+
+        // Revert gravity and reset dashing state
         rb.gravityScale = originalGravity;
         isDashing = false;
+
+        // Wait for the cooldown to finish
         yield return new WaitForSeconds(dashingCooldown);
         canDash = true;
     }
