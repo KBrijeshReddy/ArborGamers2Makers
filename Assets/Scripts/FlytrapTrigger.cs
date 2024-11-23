@@ -10,7 +10,8 @@ public class FlytrapTrigger : MonoBehaviour
     {
         if (coll.CompareTag("Player"))
         {
-            flytrapChase.Chase(coll.gameObject);
+            // flytrapChase.StartChase(coll.gameObject);
+
         }
     }
 }
