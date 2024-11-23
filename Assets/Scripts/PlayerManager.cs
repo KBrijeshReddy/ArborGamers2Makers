@@ -18,8 +18,9 @@ public class PlayerManager : MonoBehaviour
     public float recoveryTime = 3f;
     public LayerMask groundLayer;
     public SpriteRenderer playerSprite;
-    private Coroutine recoveryCoroutine;
+    public string level;
 
+    private Coroutine recoveryCoroutine;
     private Rigidbody2D rb;
     private RaycastHit2D hit;
     private float timeOnGround = 0f;
@@ -37,7 +38,7 @@ public class PlayerManager : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (IsGrounded())
+        if (IsGrounded() && level == "fire")
         {
             timeOnGround += Time.deltaTime;
             playerSprite.color = Color.Lerp(Color.white, Color.red, timeOnGround/maxTimeOnGround);
