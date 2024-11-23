@@ -810,7 +810,7 @@ GameObject:
   - component: {fileID: 1215429057}
   m_Layer: 0
   m_Name: WaterFall
-  m_TagString: Untagged
+  m_TagString: water
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1015,6 +1015,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   playerSprite: {fileID: 992790302}
+  level: 
 --- !u!1 &1459855755
 GameObject:
   m_ObjectHideFlags: 0
