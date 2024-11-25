@@ -41,6 +41,7 @@ public class PlatformsTrigger : MonoBehaviour
         {
             canMove = false;
             stayTimer = 0f; // Reset timer
+            Destroy(gameObject);
         }
     }
 }
