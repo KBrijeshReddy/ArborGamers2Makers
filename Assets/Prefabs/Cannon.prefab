@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5812490199118973316}
   - component: {fileID: 5812490197911824341}
-  - component: {fileID: 5812490197911824342}
   - component: {fileID: 2583788121044064803}
+  - component: {fileID: 4117098657850835588}
   m_Layer: 0
   m_Name: Cannon
   m_TagString: enemy
@@ -87,22 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5812490197911824342
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5812490197911824343}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f75ffeebfa2cd48409f0e2aaee3bc3e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerInRange: 0
-  fireballPrefab: {fileID: 8338433813978350201, guid: 7b403f0b25444fb4d82ea369d1dfc7a4, type: 3}
-  shootInterval: 0.85
-  fireballSpeed: 10
 --- !u!60 &2583788121044064803
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -147,6 +131,22 @@ PolygonCollider2D:
       - {x: 0.44643363, y: 0.0052072927}
       - {x: 0.43527374, y: 0.121280506}
       - {x: 0.32591555, y: 0.22100672}
+--- !u!114 &4117098657850835588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5812490197911824343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f75ffeebfa2cd48409f0e2aaee3bc3e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerInRange: 0
+  fireballPrefab: {fileID: 8338433813978350201, guid: 7b403f0b25444fb4d82ea369d1dfc7a4, type: 3}
+  shootInterval: 1
+  fireballSpeed: 10
 --- !u!1 &5812490198313499677
 GameObject:
   m_ObjectHideFlags: 0
@@ -218,4 +218,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87aa60e6bb94c334c9b461df5f0cda8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cannonShooter: {fileID: 5812490197911824342}
+  cannonShooter: {fileID: 4117098657850835588}

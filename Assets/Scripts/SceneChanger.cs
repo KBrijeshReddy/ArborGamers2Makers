@@ -6,11 +6,7 @@ using UnityEngine.SceneManagement;
 public class SceneChanger : MonoBehaviour
 {
     public bool keyCollected;
-<<<<<<< HEAD
-    public int sceneNum;
-=======
     public int nextSceneNumber;
->>>>>>> c2e2262f89aeeb103c41bc4c7efdc685a4bb7c02
 
     void Start()
     {
@@ -23,11 +19,7 @@ public class SceneChanger : MonoBehaviour
         {
             if (keyCollected)
             {
-<<<<<<< HEAD
-                SceneManager.LoadScene(sceneNum);
-=======
                 SceneManager.LoadScene(nextSceneNumber);
->>>>>>> c2e2262f89aeeb103c41bc4c7efdc685a4bb7c02
             }
         }
     }
