@@ -20,6 +20,7 @@ public class PlayerManager : MonoBehaviour
     public SpriteRenderer playerSprite;
     public string level;
     public Animator animator;
+    public TrailRenderer tr;
 
     private Coroutine recoveryCoroutine;
     private Rigidbody2D rb;
@@ -72,23 +73,28 @@ public class PlayerManager : MonoBehaviour
     {
         if (isDashing)
         {
-            Debug.Log("dashing");
+            animator.SetBool("touchedGround", true);
             return;
         }
-        Debug.Log("not dashing");
-        if (Input.GetKeyDown(KeyCode.Q) && IsGrounded())
+        if (IsGrounded())
         {
+            animator.SetBool("touchedGround", true);
+        }
+        if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
+        {
+            animator.SetBool("touchedGround", false);
+            animator.Play("Roll");
             Debug.Log("nil");
             rb.gravityScale *= -1;
             IsAbove = !IsAbove;
             timeOnGround = 0f;
             FlipY();
         }
-        if (canDash && Input.GetKeyDown(KeyCode.Space))
+        if (canDash && Input.GetKeyDown(KeyCode.LeftShift))
         {
-            animator.Play("Dash");
+            animator.Play("Dash");   
             StartCoroutine(Dash());
-
+            
         }
         Debug.Log(CurrentSpeed);
     }
@@ -130,7 +136,7 @@ public class PlayerManager : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "enemy")
+        if (collision.gameObject.tag == "enemy" || collision.gameObject.tag == "poison")
         {
             RestartLevel();
         }
@@ -162,8 +168,12 @@ public class PlayerManager : MonoBehaviour
         // Apply the dashing force
         rb.velocity = new Vector2(transform.localScale.x * dashingPower, 0f);
 
+        tr.emitting = true;
+
         // Wait for the dashing time to complete
         yield return new WaitForSeconds(dashingTime);
+
+        tr.emitting = false;
 
         // Revert gravity and reset dashing state
         rb.gravityScale = originalGravity;
