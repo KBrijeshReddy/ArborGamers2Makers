@@ -19,6 +19,7 @@ public class SceneChanger : MonoBehaviour
         {
             if (keyCollected)
             {
+                StopWatch.instance.ResetTimer();
                 SceneManager.LoadScene(nextSceneNumber);
             }
         }

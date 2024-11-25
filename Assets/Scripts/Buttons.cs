@@ -15,6 +15,7 @@ public class Buttons : MonoBehaviour
     
     public void TutorialScene()
     {
+        StopWatch.instance.ResetTimer(true);
         SceneManager.LoadScene(Tutorial);
     }
 

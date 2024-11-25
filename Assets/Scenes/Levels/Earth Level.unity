@@ -3559,6 +3559,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &607041436 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3222461207223095131, guid: e27dc5fc4856cbf4aafe333fd4a02ad9, type: 3}
+  m_PrefabInstance: {fileID: 1933098342}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3aac80088648d5b489b28ea5a8cad960, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -3881,7 +3892,7 @@ PrefabInstance:
     - target: {fileID: 88255044443439389, guid: a71382aab250e5e498d04f7a1f92a45e, type: 3}
       propertyPath: sceneChanger
       value: 
-      objectReference: {fileID: 164817622}
+      objectReference: {fileID: 607041436}
     - target: {fileID: 1216361120425474055, guid: a71382aab250e5e498d04f7a1f92a45e, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -4346,6 +4357,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 118522624}
+  countDown: 1
 --- !u!1001 &1566026696
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9257,6 +9269,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3222461207223095131, guid: e27dc5fc4856cbf4aafe333fd4a02ad9, type: 3}
       propertyPath: sceneNum
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3222461207223095131, guid: e27dc5fc4856cbf4aafe333fd4a02ad9, type: 3}
+      propertyPath: nextSceneNumber
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5528040395119287523, guid: e27dc5fc4856cbf4aafe333fd4a02ad9, type: 3}

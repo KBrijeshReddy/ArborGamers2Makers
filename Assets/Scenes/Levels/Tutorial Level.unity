@@ -2114,6 +2114,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 1306254334}
+  countDown: 1
 --- !u!1 &927762986
 GameObject:
   m_ObjectHideFlags: 0
@@ -6412,6 +6413,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3222461207223095131, guid: e27dc5fc4856cbf4aafe333fd4a02ad9, type: 3}
       propertyPath: sceneNum
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3222461207223095131, guid: e27dc5fc4856cbf4aafe333fd4a02ad9, type: 3}
+      propertyPath: nextSceneNumber
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5528040395119287523, guid: e27dc5fc4856cbf4aafe333fd4a02ad9, type: 3}

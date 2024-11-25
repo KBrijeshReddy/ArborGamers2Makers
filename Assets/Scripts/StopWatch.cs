@@ -5,16 +5,30 @@ using TMPro;
 
 public class StopWatch : MonoBehaviour
 {
-    static public float min;
-    static public float sec;
+    public static StopWatch instance; void Awake() { instance = this; }
+    public static float min;
+    public static float sec;
+    public static float totalSec;
 
-    [SerializeField] private TMP_Text text;
+    [SerializeField]
+    private TMP_Text text;
+    [SerializeField]
+    private bool countDown;
 
     private string minStr;
     private string secStr;
 
-    void Start()
+    public void ResetTimer(bool start = false)
     {
+        if (start)
+        {
+            totalSec = 0;
+        }
+        else
+        {
+            totalSec += 60*min + sec;
+        }
+
         min = 0;
         sec = 0;
     }
@@ -50,6 +64,7 @@ public class StopWatch : MonoBehaviour
 
     void FixedUpdate()
     {
-            sec += Time.deltaTime;
+        if (countDown)
+        sec += Time.deltaTime;
     }
 }
